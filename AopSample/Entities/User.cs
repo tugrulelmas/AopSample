@@ -4,7 +4,8 @@ namespace AopSample.Entities
 {
     public class User
     {
-        public User(string name, string email) {
+        public User(Guid id, string name, string email) {
+            Id = id;
             Name = name;
             Email = email;
         }

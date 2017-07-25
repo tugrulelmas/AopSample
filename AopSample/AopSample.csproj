@@ -99,6 +99,13 @@
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="DynamicHandlers\AuthenticationHandler.cs" />
+    <Compile Include="DynamicHandlers\ExceptionContext.cs" />
+    <Compile Include="DynamicHandlers\IDynamicHandler.cs" />
+    <Compile Include="DynamicHandlers\IExceptionContext.cs" />
+    <Compile Include="DynamicHandlers\IRequestContext.cs" />
+    <Compile Include="DynamicHandlers\IResponseContext.cs" />
+    <Compile Include="DynamicHandlers\RequestContext.cs" />
     <Compile Include="Exceptions\DenialException.cs" />
     <Compile Include="DTOs\UserDTO.cs" />
     <Compile Include="Entities\User.cs" />
@@ -107,6 +114,9 @@
     </Compile>
     <Compile Include="Helper\ActionType.cs" />
     <Compile Include="Helper\CurrentContext.cs" />
+    <Compile Include="Helper\CustomActionFilter.cs" />
+    <Compile Include="Helper\CustomExceptionFilterAttribute.cs" />
+    <Compile Include="Helper\Extensions.cs" />
     <Compile Include="Helper\ICurrentContext.cs" />
     <Compile Include="Interceptors\DataValidationInterceptor.cs" />
     <Compile Include="Interceptors\IServiceInterceptor.cs" />

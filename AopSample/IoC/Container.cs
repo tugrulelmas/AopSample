@@ -36,6 +36,12 @@ namespace AopSample.IoC
             container.Register(Classes.FromAssemblyContaining(typeof(T2)).BasedOn(typeof(T1)).WithService.FromInterface().Configure(c => c.LifestyleSingleton().Interceptors<ServiceInterceptor>()));
         }
 
+        public static void RegisterWithBase<T1, T2>() => RegisterWithBase(typeof(T1), typeof(T2));
+
+        public static void RegisterWithBase(Type type1, Type type2) {
+            container.Register(Classes.FromAssemblyContaining(type2).BasedOn(type1).WithService.Base().Configure(c => c.LifestyleSingleton().NamedAutomatically(Guid.NewGuid().ToString())));
+        }
+
         private static void RegisterComponent<T>(ComponentRegistration<T> componentRegistration, LifestyleType lifestyleType) where T : class {
             var lifestyleDescriptor = new LifestyleDescriptor<T>(lifestyleType);
             componentRegistration.AddDescriptor(lifestyleDescriptor);
