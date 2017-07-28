@@ -8,11 +8,11 @@ namespace AopSample.ApplicationServices.Decorator
     /*
     public class UserService : IUserService
     {
-        private readonly IUserRepository userRepositoy;
+        private readonly IUserRepository userRepository;
         private readonly ILog log;
 
-        public UserService(IUserRepository userRepositoy, ILog log) {
-            this.userRepositoy = userRepositoy;
+        public UserService(IUserRepository userRepository, ILog log) {
+            this.userRepository = userRepository;
             this.log = log;
         }
 
@@ -21,7 +21,7 @@ namespace AopSample.ApplicationServices.Decorator
                 log.Debug($"Before adding user. UserName: {user.Name}");
 
                 var userEntity = new User(user.Name, user.Email);
-                userRepositoy.Add(userEntity);
+                userRepository.Add(userEntity);
 
                 log.Debug($"After adding user. UserName: {user.Name}");
             } catch (Exception ex) {
@@ -33,12 +33,12 @@ namespace AopSample.ApplicationServices.Decorator
 
     public class UserServiceWithValidation : IUserService
     {
-        private readonly IUserRepository userRepositoy;
+        private readonly IUserRepository userRepository;
         private readonly IUserService userService;
 
-        public UserServiceWithValidation(IUserRepository userRepositoy, IUserService userService)
+        public UserServiceWithValidation(IUserRepository userRepository, IUserService userService)
         {
-            this.userRepositoy = userRepositoy;
+            this.userRepository = userRepository;
             this.userService = userService;
         }
 
@@ -52,7 +52,7 @@ namespace AopSample.ApplicationServices.Decorator
             if (string.IsNullOrEmpty(user.Email))
                 throw new Exception("UserEmailIsEmpty");
 
-            var tmpUser = userRepositoy.Get(user.Email);
+            var tmpUser = userRepository.Get(user.Email);
             if (tmpUser != null)
                 throw new Exception("UserIsAlreadyRegistered");
 

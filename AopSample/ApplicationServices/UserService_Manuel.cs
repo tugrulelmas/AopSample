@@ -8,11 +8,11 @@ namespace AopSample.ApplicationServices.Manuel
     /*
     public class UserService : IUserService
     {
-        private readonly IUserRepository userRepositoy;
+        private readonly IUserRepository userRepository;
         private readonly ILog log;
 
-        public UserService(IUserRepository userRepositoy, ILog log) {
-            this.userRepositoy = userRepositoy;
+        public UserService(IUserRepository userRepository, ILog log) {
+            this.userRepository = userRepository;
             this.log = log;
         }
 
@@ -26,7 +26,7 @@ namespace AopSample.ApplicationServices.Manuel
             if (string.IsNullOrEmpty(user.Email))
                 throw new Exception("UserEmailIsEmpty");
 
-            var tmpUser = userRepositoy.Get(user.Email);
+            var tmpUser = userRepository.Get(user.Email);
             if (tmpUser != null)
                 throw new Exception("UserIsAlreadyRegistered");
 
@@ -34,7 +34,7 @@ namespace AopSample.ApplicationServices.Manuel
                 log.Debug($"Before adding user. UserName: {user.Name}");
 
                 var userEntity = new User(user.Name, user.Email);
-                userRepositoy.Add(userEntity);
+                userRepository.Add(userEntity);
 
                 log.Debug($"After adding user. UserName: {user.Name}");
             } catch (Exception ex) {
